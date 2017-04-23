@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.service.type: LoadBalancer
+  creationTimestamp: null
+  name: hitcounter
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: hitcounter
+    spec:
+      containers:
+      - env:
+        - name: REDIS_HOST
+          value: redis
+        image: hitcounter
+        imagePullPolicy: IfNotPresent
+        name: hitcounter
+        ports:
+        - containerPort: 5000
+        resources: {}
+      restartPolicy: Always
+status: {}

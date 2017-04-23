@@ -6,9 +6,12 @@ services:
     ports:
       - "6379"
 
-  app:
+  hitcounter:
     build: .
+    image: hitcounter
     ports:
       - "5000"
     environment:
       - REDIS_HOST=redis
+    labels:
+      kompose.service.type: LoadBalancer

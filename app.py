@@ -10,7 +10,7 @@ def hello():
     visits = redis.incr('hits')
 
     html = "<h3>Hello Pythonistas</h3> <br/>" \
-           "<h2>Number of Hits:</2> {hits}<br/>"
+           "<h2>Number of Hits:</h2> {hits}<br/>"
 
     return html.format(hits=visits)
 
